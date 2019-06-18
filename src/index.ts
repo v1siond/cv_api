@@ -20,7 +20,9 @@ const server = new ApolloServer({
   schema,
   cors: {
     origin: '*',
-    credentials: true
+    methods: ['POST', 'GET'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Origin', 'Accept']
   },
   context: async ({ req }) => {
     if (req && req.headers) {
@@ -54,9 +56,9 @@ createConnection({
   logging: true
 })
   .then(connection => {
-    withCors(server.listen(process.env.PORT || 4000).then(({ url, subscriptionsUrl }) => {
+    server.listen(process.env.PORT || 4000).then(({ url, subscriptionsUrl }) => {
       console.log(`🚀  Server ready at ${url}`)
       console.log(`🚀  Websocket Server ready at ${subscriptionsUrl}`)
-    }))
+    })
   })
   .catch(error => console.log(error))
