@@ -18,10 +18,7 @@ const schema = makeExecutableSchema({ typeDefs, resolvers })
 
 const server = new ApolloServer({
   schema,
-  cors: {
-    origin: '*',
-    credentials: true
-  },
+  cors: true,
   context: async ({ req }) => {
     if (req && req.headers) {
       const token = req.headers.authorization
