@@ -18,7 +18,10 @@ const schema = makeExecutableSchema({ typeDefs, resolvers })
 
 const server = new ApolloServer({
   schema,
-  cors: true,
+  cors: {
+    origin: '*',
+    credentials: true
+  },
   context: async ({ req }) => {
     if (req && req.headers) {
       const token = req.headers.authorization
@@ -26,6 +29,18 @@ const server = new ApolloServer({
     }
   }
 })
+
+const withCors = handler => (req, res, ...args) => {
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
+    res.setHeader('Access-Control-Allow-Headers', 'authorization')
+    res.end()
+  } else {
+    return handler(req, res, ...args)
+  }
+}
 
 createConnection({
   type: 'postgres',
@@ -39,9 +54,9 @@ createConnection({
   logging: true
 })
   .then(connection => {
-    server.listen(process.env.PORT || 4000).then(({ url, subscriptionsUrl }) => {
+    withCors(server.listen(process.env.PORT || 4000).then(({ url, subscriptionsUrl }) => {
       console.log(`🚀  Server ready at ${url}`)
       console.log(`🚀  Websocket Server ready at ${subscriptionsUrl}`)
-    })
+    }))
   })
   .catch(error => console.log(error))
