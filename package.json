@@ -26,10 +26,12 @@
     "jsonwebtoken": "^8.3.0",
     "merge-graphql-schemas": "^1.5.7",
     "mysql": "^2.14.1",
+    "nodemon": "^1.18.4",
     "path": "^0.12.7",
     "pg": "^7.5.0",
     "reflect-metadata": "^0.1.10",
     "subscriptions-transport-ws": "^0.9.15",
+    "ts-node": "3.3.0",
     "typeorm": "0.2.7",
     "typescript": "^3.1.1",
     "uuid": "^3.3.2"
@@ -42,8 +44,6 @@
     "chai": "^4.2.0",
     "faker": "^4.1.0",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.4",
-    "ts-node": "3.3.0",
     "tslint": "^5.11.0",
     "tslint-config-standard": "^8.0.1"
   }
