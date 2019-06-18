@@ -21,8 +21,7 @@ const server = new ApolloServer({
   cors: {
     origin: '*',
     methods: ['POST', 'GET'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Origin', 'Accept']
+    credentials: true
   },
   context: async ({ req }) => {
     if (req && req.headers) {
