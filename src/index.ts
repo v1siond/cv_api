@@ -30,9 +30,9 @@ createConnection({
   type: 'postgres',
   host: 'localhost',
   port: 5432,
-  username: 'postgres',
-  password: '2512$ale',
-  database: 'cv_api',
+  username: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
+  database: process.env.PGDBNAME,
   entities: [User, Category, Thread, Post],
   synchronize: true,
   logging: true
