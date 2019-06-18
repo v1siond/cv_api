@@ -28,7 +28,7 @@ const server = new ApolloServer({
 
 createConnection({
   type: 'postgres',
-  host: 'alex-cv-api.herokuapp',
+  host: process.env.PGHOST,
   port: 5432,
   username: process.env.PGUSER,
   password: process.env.PGPASSWORD,
