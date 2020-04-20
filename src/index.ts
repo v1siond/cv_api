@@ -31,25 +31,13 @@ const server = new ApolloServer({
   }
 })
 
-const withCors = handler => (req, res, ...args) => {
-  if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
-    res.setHeader('Access-Control-Allow-Credentials', 'true')
-    res.setHeader('Access-Control-Allow-Headers', 'authorization')
-    res.end()
-  } else {
-    return handler(req, res, ...args)
-  }
-}
-
 createConnection({
   type: 'postgres',
-  host: process.env.PGHOST,
+  host: process.env.PGHOST || 'localhost',
   port: 5432,
-  username: process.env.PGUSER,
-  password: process.env.PGPASSWORD,
-  database: process.env.PGDBNAME,
+  username: process.env.PGUSER || 'postgres',
+  password: process.env.PGPASSWORD || 'postgres',
+  database: process.env.PGDBNAME || 'cv_api',
   entities: [User, Category, Thread, Post],
   synchronize: true,
   logging: true
