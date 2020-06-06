@@ -14,7 +14,7 @@
     "test": "./node_modules/.bin/mocha -r ts-node/register src/**/*.test.ts --reporter tap"
   },
   "dependencies": {
-    "apollo-server": "^2.1.0",
+    "apollo-server": "^2.14.2",
     "bcrypt": "^3.0.1",
     "global": "^4.3.2",
     "graphql": "^14.0.2",
