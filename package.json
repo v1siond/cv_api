@@ -23,7 +23,7 @@
     "graphql-type-datetime": "^0.2.2",
     "http": "^0.0.0",
     "js-md5": "^0.7.3",
-    "jsonwebtoken": "^8.3.0",
+    "jsonwebtoken": "^9.0.0",
     "merge-graphql-schemas": "^1.5.7",
     "mysql": "^2.14.1",
     "nodemon": "^1.18.4",
